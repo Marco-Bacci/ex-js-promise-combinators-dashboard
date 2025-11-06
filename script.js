@@ -30,7 +30,7 @@ async function getDashboardData(query) {
       airport: airports[0].name,
     };
   } catch (error) {
-    console.error(error);
+    throw new Error(console.log("Errore nel recupero dei dati", error.message))
   }
 }
 
