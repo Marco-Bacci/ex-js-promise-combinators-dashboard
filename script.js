@@ -15,7 +15,7 @@ async function getDashboardData(query) {
     `http://localhost:3333/airports?search=${query}`
   );
 
-  const results = Promise.all([destinationsProm, weathersProm, airportsProm]);
+  const results = await Promise.all([destinationsProm, weathersProm, airportsProm]);
 
   const destinations = results[0];
   const weathers = results[1];
@@ -30,6 +30,6 @@ async function getDashboardData(query) {
   };
 }
 
-// getDashboardData("London").then((data) => {
-//   console.log("data:", data);
-// });
+getDashboardData("London").then((data) => {
+  console.log("data:", data);
+});
