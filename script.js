@@ -15,7 +15,7 @@ async function getDashboardData(query) {
     const airportsProm = fetchJson(
       `http://localhost:3333/airports?search=${query}`
     );
-
+    // destruttturo i risultati --> const destinations = results[0]
     const [destinations, weathers, airports] = await Promise.all([
       destinationsProm,
       weathersProm,
@@ -30,10 +30,12 @@ async function getDashboardData(query) {
       airport: airports[0].name,
     };
   } catch (error) {
-    throw new Error(console.log("Errore nel recupero dei dati", error.message))
+    throw new Error(console.log("Errore nel recupero dei dati", error.message));
   }
 }
 
-getDashboardData("London").then((info) => {
-  console.log("info:", info);
-});
+getDashboardData("London")
+  .then((info) => {
+    console.log("info:", info);
+  })
+  .catch((error) => console.error(error));
